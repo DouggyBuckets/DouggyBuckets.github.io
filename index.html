@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Douglas Le</title>
+<meta name="description" content="Douglas Le — software engineer. CS student at the University of Michigan, builder of Spun and other full-stack and systems projects.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0b0d10;
+    --surface: #14171c;
+    --surface-raised: #1b1f26;
+    --border: #262b33;
+    --text: #e8eaed;
+    --text-muted: #8b94a3;
+    --accent: #e0a65c;
+    --accent-soft: rgba(224, 166, 92, 0.12);
+    --mono: "IBM Plex Mono", ui-monospace, "SF Mono", Consolas, monospace;
+    --sans: "IBM Plex Sans", system-ui, sans-serif;
+  }
+
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--sans);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  a { color: var(--accent); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+
+  .wrap {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 0 24px 120px;
+  }
+
+  /* ---------- header ---------- */
+
+  header {
+    padding: 72px 0 40px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .prompt {
+    font-family: var(--mono);
+    font-size: 13px;
+    color: var(--accent);
+    margin: 0 0 18px;
+  }
+  .prompt::before { content: "$ "; color: var(--text-muted); }
+
+  h1 {
+    font-family: var(--mono);
+    font-weight: 600;
+    font-size: clamp(32px, 6vw, 44px);
+    margin: 0 0 12px;
+    letter-spacing: -0.01em;
+  }
+
+  .tagline {
+    font-size: 17px;
+    color: var(--text-muted);
+    max-width: 52ch;
+    margin: 0 0 28px;
+  }
+
+  nav.links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    font-family: var(--mono);
+    font-size: 13px;
+  }
+
+  nav.links a {
+    color: var(--text);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 7px 12px;
+    background: var(--surface);
+  }
+  nav.links a:hover {
+    text-decoration: none;
+    border-color: var(--accent);
+    color: var(--accent);
+  }
+
+  /* ---------- sections ---------- */
+
+  section { padding: 56px 0; border-bottom: 1px solid var(--border); }
+  section:last-of-type { border-bottom: none; }
+
+  .eyebrow {
+    font-family: var(--mono);
+    font-size: 12px;
+    color: var(--text-muted);
+    margin: 0 0 20px;
+    letter-spacing: 0.02em;
+  }
+  .eyebrow::before { content: "// "; color: var(--border); }
+
+  .about p {
+    max-width: 62ch;
+    color: var(--text);
+    margin: 0 0 14px;
+  }
+  .about p:last-child { margin-bottom: 0; }
+
+  /* ---------- featured project ---------- */
+
+  .featured {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    overflow: hidden;
+  }
+
+  .featured img {
+    width: 100%;
+    display: block;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .featured-body { padding: 28px; }
+
+  .featured h3 {
+    font-family: var(--mono);
+    font-size: 22px;
+    font-weight: 600;
+    margin: 0 0 6px;
+  }
+
+  .featured .sub {
+    color: var(--text-muted);
+    font-size: 14px;
+    margin: 0 0 18px;
+  }
+
+  .featured p { max-width: 64ch; margin: 0 0 18px; }
+
+  .tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 7px;
+    margin: 0 0 20px;
+  }
+
+  .tag {
+    font-family: var(--mono);
+    font-size: 11.5px;
+    color: var(--accent);
+    background: var(--accent-soft);
+    border-radius: 4px;
+    padding: 4px 9px;
+  }
+
+  .featured ul {
+    margin: 0 0 22px;
+    padding-left: 1.2em;
+    max-width: 64ch;
+  }
+  .featured li { margin-bottom: 7px; color: var(--text); }
+  .featured li:last-child { margin-bottom: 0; }
+
+  .cta-row {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+
+  .btn {
+    font-family: var(--mono);
+    font-size: 13px;
+    font-weight: 500;
+    padding: 9px 16px;
+    border-radius: 5px;
+    border: 1px solid var(--border);
+  }
+  .btn.primary {
+    background: var(--accent);
+    color: #1a1304;
+    border-color: var(--accent);
+  }
+  .btn.primary:hover { text-decoration: none; opacity: 0.9; }
+  .btn.ghost { color: var(--text); background: transparent; }
+  .btn.ghost:hover { text-decoration: none; border-color: var(--accent); color: var(--accent); }
+
+  /* ---------- project grid ---------- */
+
+  .project-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+
+  .project-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 20px;
+  }
+
+  .project-card h4 {
+    font-family: var(--mono);
+    font-size: 15px;
+    font-weight: 600;
+    margin: 0 0 10px;
+  }
+
+  .project-card ul {
+    margin: 0 0 14px;
+    padding-left: 1.1em;
+    font-size: 13.5px;
+    color: var(--text-muted);
+  }
+  .project-card li { margin-bottom: 6px; }
+  .project-card li:last-child { margin-bottom: 0; }
+
+  .project-card .tags { margin-bottom: 0; }
+
+  /* ---------- skills ---------- */
+
+  .skill-group { margin-bottom: 18px; }
+  .skill-group:last-child { margin-bottom: 0; }
+
+  .skill-label {
+    font-family: var(--mono);
+    font-size: 12px;
+    color: var(--text-muted);
+    width: 150px;
+    flex: none;
+  }
+
+  .skill-row {
+    display: flex;
+    gap: 16px;
+    align-items: baseline;
+  }
+
+  .skill-values {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 7px;
+  }
+
+  /* ---------- education / experience ---------- */
+
+  .entry { display: grid; grid-template-columns: 1fr auto; gap: 8px 16px; align-items: baseline; margin-bottom: 4px; }
+  .entry h4 { font-family: var(--mono); font-size: 15px; margin: 0; font-weight: 600; }
+  .entry .meta { font-family: var(--mono); font-size: 12px; color: var(--text-muted); text-align: right; white-space: nowrap; }
+  .entry-sub { color: var(--text-muted); font-size: 14px; margin: 0 0 12px; }
+  .entry-detail { font-size: 14px; color: var(--text); max-width: 62ch; }
+
+  /* ---------- footer ---------- */
+
+  footer {
+    padding-top: 56px;
+    font-family: var(--mono);
+    font-size: 13px;
+    color: var(--text-muted);
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  @media (max-width: 560px) {
+    .project-grid { grid-template-columns: 1fr; }
+    .entry { grid-template-columns: 1fr; }
+    .entry .meta { text-align: left; }
+  }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+
+  <header>
+    <p class="prompt">whoami</p>
+    <h1>Douglas Le</h1>
+    <p class="tagline">Software engineer studying Computer Science and Mathematics of Finance &amp; Risk Management at the University of Michigan. I like building things from the database up.</p>
+    <nav class="links">
+      <a href="https://github.com/DouggyBuckets" target="_blank" rel="noopener">GitHub</a>
+      <a href="https://www.linkedin.com/in/douglas-le-9a9867347/" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="mailto:douglasdle19@gmail.com">Email</a>
+    </nav>
+  </header>
+
+  <section class="about">
+    <p class="eyebrow">~/about</p>
+    <p>I'm a CS student at Michigan with a second major in Math of Finance &amp; Risk Management, currently looking for new-grad software engineering roles. My coursework spans data structures and algorithms, database systems, web systems, and machine learning, and I've spent the past couple of months building Spun, a full-stack social app, end to end — backend, mobile client, and infrastructure.</p>
+  </section>
+
+  <section>
+    <p class="eyebrow">~/projects/spun</p>
+    <div class="featured">
+      <img src="assets/spun-feed.jpg" alt="Spun app home feed, showing popular albums and reviews">
+      <div class="featured-body">
+        <h3>Spun</h3>
+        <p class="sub">A social rating &amp; review app for music — built solo, end to end</p>
+        <p>A Letterboxd-style diary for music: rate and review albums and songs, build ranked lists, follow other listeners, and discover what's popular. I designed and built the full stack myself — a REST API over a normalized Postgres schema, a React Native mobile client shipping to the App Store and Play Store, and the infrastructure behind both.</p>
+        <div class="tags">
+          <span class="tag">Node.js</span>
+          <span class="tag">Express</span>
+          <span class="tag">TypeScript</span>
+          <span class="tag">PostgreSQL</span>
+          <span class="tag">React Native</span>
+          <span class="tag">Expo</span>
+          <span class="tag">JWT</span>
+          <span class="tag">Zod</span>
+          <span class="tag">Fly.io</span>
+        </div>
+        <ul>
+          <li>Architected a 40+ endpoint REST API over a normalized Postgres schema (15+ tables) with Zod request validation and JWT/bcrypt authentication, enforcing data integrity across a social graph of ratings, reviews, lists, and follows</li>
+          <li>Integrated the Spotify Web API for catalog metadata with a Postgres-backed caching layer that persists data on first lookup, cutting redundant external calls and keeping pages fast on repeat visits</li>
+          <li>Built the React Native (Expo) mobile client with a custom design system and optimistic UI updates, then shipped signed builds via EAS Build and implemented account deletion, blocking, and reporting flows required for app store approval</li>
+        </ul>
+        <div class="cta-row">
+          <a class="btn primary" href="https://douggybuckets.github.io/spun_web/" target="_blank" rel="noopener">Try it live →</a>
+          <a class="btn ghost" href="https://github.com/DouggyBuckets/spun_app" target="_blank" rel="noopener">View code</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <p class="eyebrow">~/projects/other</p>
+    <div class="project-grid">
+
+      <div class="project-card">
+        <h4>Scalable Search Engine</h4>
+        <ul>
+          <li>Architected an end-to-end search engine as three decoupled services: a MapReduce indexing pipeline, a REST API index server, and a Flask search UI</li>
+          <li>Built a segmented, 134MB inverted index over 3,000+ documents, combining tf-idf and PageRank to rank by relevance and authority</li>
+        </ul>
+        <div class="tags">
+          <span class="tag">Python</span>
+          <span class="tag">Flask</span>
+          <span class="tag">MapReduce</span>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <h4>Full-Stack Instagram Clone</h4>
+        <ul>
+          <li>Migrated a social app from Jinja2 server rendering to a React SPA backed by a 34-endpoint REST API, enabling live feed, like, and comment updates without page reloads</li>
+          <li>Deployed to AWS EC2 with Nginx as a reverse proxy and Gunicorn as the WSGI server</li>
+        </ul>
+        <div class="tags">
+          <span class="tag">React</span>
+          <span class="tag">Flask</span>
+          <span class="tag">AWS EC2</span>
+          <span class="tag">Nginx</span>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <h4>Grace Hash Join</h4>
+        <ul>
+          <li>Implemented Grace Hash Join in C++ to join relations up to 999 pages against a 16-page memory buffer</li>
+          <li>Coordinated page-level I/O between emulated disk and memory buffers, mirroring how database engines join datasets larger than RAM</li>
+        </ul>
+        <div class="tags">
+          <span class="tag">C++</span>
+          <span class="tag">Databases</span>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <h4>MapReduce Framework</h4>
+        <ul>
+          <li>Built a Manager/Worker execution framework inspired by Google's MapReduce paper, using TCP sockets to distribute tasks across independent Worker processes</li>
+          <li>Handled Worker failures via heartbeat tracking, marking Workers dead after a 10-second timeout and requeuing their task</li>
+        </ul>
+        <div class="tags">
+          <span class="tag">Python</span>
+          <span class="tag">TCP Sockets</span>
+          <span class="tag">Distributed Systems</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <section>
+    <p class="eyebrow">~/skills</p>
+
+    <div class="skill-group">
+      <div class="skill-row">
+        <span class="skill-label">Languages</span>
+        <div class="skill-values">
+          <span class="tag">TypeScript</span>
+          <span class="tag">JavaScript</span>
+          <span class="tag">Python</span>
+          <span class="tag">C++</span>
+          <span class="tag">Java</span>
+          <span class="tag">SQL</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="skill-group">
+      <div class="skill-row">
+        <span class="skill-label">Frameworks &amp; libraries</span>
+        <div class="skill-values">
+          <span class="tag">Node.js</span>
+          <span class="tag">Express</span>
+          <span class="tag">React</span>
+          <span class="tag">React Native</span>
+          <span class="tag">Flask</span>
+          <span class="tag">NumPy</span>
+          <span class="tag">Pandas</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="skill-group">
+      <div class="skill-row">
+        <span class="skill-label">Tools &amp; infra</span>
+        <div class="skill-values">
+          <span class="tag">PostgreSQL</span>
+          <span class="tag">Git</span>
+          <span class="tag">Linux</span>
+          <span class="tag">MongoDB</span>
+          <span class="tag">AWS (EC2)</span>
+          <span class="tag">Fly.io</span>
+          <span class="tag">Nginx</span>
+          <span class="tag">Gunicorn</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <p class="eyebrow">~/education</p>
+    <div class="entry">
+      <h4>University of Michigan — Ann Arbor</h4>
+      <span class="meta">Ann Arbor, MI</span>
+    </div>
+    <p class="entry-sub">B.S. Computer Science and Mathematics of Finance &amp; Risk Management · GPA 3.5/4.00 · University Honors</p>
+    <p class="entry-detail">Coursework: Data Structures &amp; Algorithms, Database Management Systems, Web Systems, Machine Learning</p>
+  </section>
+
+  <section>
+    <p class="eyebrow">~/experience</p>
+    <div class="entry">
+      <h4>Restaurant Manager</h4>
+      <span class="meta">Present</span>
+    </div>
+    <p class="entry-detail">Built and maintained the business's public website (HTML, CSS, JavaScript, jQuery, Bootstrap).</p>
+  </section>
+
+  <footer>
+    <span>Douglas Le · 2026</span>
+    <span><a href="mailto:douglasdle19@gmail.com">douglasdle19@gmail.com</a></span>
+  </footer>
+
+</div>
+
+</body>
+</html>
