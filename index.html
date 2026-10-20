@@ -308,20 +308,17 @@
         <p class="sub">A social rating &amp; review app for music — built solo, end to end</p>
         <p>A Letterboxd-style diary for music: rate and review albums and songs, build ranked lists, follow other listeners, and discover what's popular. I designed and built the full stack myself — a REST API over a normalized Postgres schema, a React Native mobile client shipping to the App Store and Play Store, and the infrastructure behind both.</p>
         <div class="tags">
-          <span class="tag">Node.js</span>
-          <span class="tag">Express</span>
           <span class="tag">TypeScript</span>
+          <span class="tag">Node.js/Express</span>
           <span class="tag">PostgreSQL</span>
-          <span class="tag">React Native</span>
-          <span class="tag">Expo</span>
-          <span class="tag">JWT</span>
-          <span class="tag">Zod</span>
-          <span class="tag">Fly.io</span>
+          <span class="tag">React Native (Expo)</span>
+          <span class="tag">Docker</span>
         </div>
         <ul>
-          <li>Architected a 40+ endpoint REST API over a normalized Postgres schema (15+ tables) with Zod request validation and JWT/bcrypt authentication, enforcing data integrity across a social graph of ratings, reviews, lists, and follows</li>
-          <li>Integrated the Spotify Web API for catalog metadata with a Postgres-backed caching layer that persists data on first lookup, cutting redundant external calls and keeping pages fast on repeat visits</li>
-          <li>Built the React Native (Expo) mobile client with a custom design system and optimistic UI updates, then shipped signed builds via EAS Build and implemented account deletion, blocking, and reporting flows required for app store approval</li>
+          <li>Built a 40+ endpoint REST API in Node.js, Express, and TypeScript over a normalized PostgreSQL schema (15+ tables), using Zod request validation and JWT/bcrypt authentication to enforce data integrity across a social graph of ratings, reviews, lists, and follows</li>
+          <li>Integrated the Spotify Web API for album, song, and artist metadata with a Postgres-backed caching layer that persists catalog data on first lookup, eliminating redundant external calls and keeping rating and review pages fast on repeat visits</li>
+          <li>Built the React Native (Expo) mobile client with a custom design system and optimistic UI updates for likes, follows, and ratings, then shipped signed builds via EAS Build</li>
+          <li>Implemented account deletion, blocking, and reporting flows required for Apple App Store and Google Play approval, meeting platform review requirements for apps with user-generated content</li>
         </ul>
         <div class="cta-row">
           <a class="btn primary" href="https://douggybuckets.github.io/spun_web/" target="_blank" rel="noopener">Try it live →</a>
@@ -344,7 +341,8 @@
         <div class="tags">
           <span class="tag">Python</span>
           <span class="tag">Flask</span>
-          <span class="tag">MapReduce</span>
+          <span class="tag">REST API</span>
+          <span class="tag">TF-IDF/PageRank</span>
         </div>
       </div>
 
@@ -357,8 +355,10 @@
         <div class="tags">
           <span class="tag">React</span>
           <span class="tag">Flask</span>
+          <span class="tag">REST API</span>
           <span class="tag">AWS EC2</span>
           <span class="tag">Nginx</span>
+          <span class="tag">Gunicorn</span>
         </div>
       </div>
 
@@ -370,20 +370,19 @@
         </ul>
         <div class="tags">
           <span class="tag">C++</span>
-          <span class="tag">Databases</span>
         </div>
       </div>
 
       <div class="project-card">
-        <h4>MapReduce Framework</h4>
+        <h4>Distributed MapReduce Framework</h4>
         <ul>
-          <li>Built a Manager/Worker execution framework inspired by Google's MapReduce paper, using TCP sockets to distribute tasks across independent Worker processes</li>
-          <li>Handled Worker failures via heartbeat tracking, marking Workers dead after a 10-second timeout and requeuing their task</li>
+          <li>Built a distributed Manager/Worker execution framework inspired by Google's MapReduce paper, using TCP sockets to coordinate task distribution across independent Worker processes</li>
+          <li>Handled Worker failures by tracking heartbeats, marking Workers dead after a 10-second timeout, and requeuing their in-progress task for reassignment to the next available Worker</li>
         </ul>
         <div class="tags">
           <span class="tag">Python</span>
-          <span class="tag">TCP Sockets</span>
           <span class="tag">Distributed Systems</span>
+          <span class="tag">TCP Sockets</span>
         </div>
       </div>
 
@@ -397,11 +396,11 @@
       <div class="skill-row">
         <span class="skill-label">Languages</span>
         <div class="skill-values">
-          <span class="tag">TypeScript</span>
-          <span class="tag">JavaScript</span>
-          <span class="tag">Python</span>
           <span class="tag">C++</span>
+          <span class="tag">Python</span>
           <span class="tag">Java</span>
+          <span class="tag">JavaScript</span>
+          <span class="tag">TypeScript</span>
           <span class="tag">SQL</span>
         </div>
       </div>
@@ -411,11 +410,10 @@
       <div class="skill-row">
         <span class="skill-label">Frameworks &amp; libraries</span>
         <div class="skill-values">
-          <span class="tag">Node.js</span>
-          <span class="tag">Express</span>
+          <span class="tag">Flask</span>
           <span class="tag">React</span>
           <span class="tag">React Native</span>
-          <span class="tag">Flask</span>
+          <span class="tag">Node.js/Express</span>
           <span class="tag">NumPy</span>
           <span class="tag">Pandas</span>
         </div>
@@ -424,14 +422,14 @@
 
     <div class="skill-group">
       <div class="skill-row">
-        <span class="skill-label">Tools &amp; infra</span>
+        <span class="skill-label">Tools</span>
         <div class="skill-values">
-          <span class="tag">PostgreSQL</span>
           <span class="tag">Git</span>
           <span class="tag">Linux</span>
+          <span class="tag">PostgreSQL</span>
           <span class="tag">MongoDB</span>
+          <span class="tag">Docker</span>
           <span class="tag">AWS (EC2)</span>
-          <span class="tag">Fly.io</span>
           <span class="tag">Nginx</span>
           <span class="tag">Gunicorn</span>
         </div>
@@ -446,14 +444,14 @@
       <span class="meta">Ann Arbor, MI</span>
     </div>
     <p class="entry-sub">B.S. Computer Science and Mathematics of Finance &amp; Risk Management · GPA 3.5/4.00 · University Honors</p>
-    <p class="entry-detail">Coursework: Data Structures &amp; Algorithms, Database Management Systems, Web Systems, Machine Learning</p>
+    <p class="entry-detail">Coursework: Data Structures &amp; Algorithms, Database Management Systems, Web Systems, Machine Learning, Bayesian ML</p>
   </section>
 
   <section>
     <p class="eyebrow">~/experience</p>
     <div class="entry">
       <h4>Restaurant Manager</h4>
-      <span class="meta">Present</span>
+      <span class="meta">June 2024 – Aug 2025</span>
     </div>
     <p class="entry-detail">Built and maintained the business's public website (HTML, CSS, JavaScript, jQuery, Bootstrap).</p>
   </section>
