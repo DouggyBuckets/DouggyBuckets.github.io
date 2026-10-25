@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Douglas Le</title>
-<meta name="description" content="Douglas Le — software engineer. CS student at the University of Michigan, builder of Spun and other full-stack and systems projects.">
+<meta name="description" content="Douglas Le — software engineer. CS student at the University of Michigan, builder of Spun, Drape, and other full-stack, AI and systems projects.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -296,7 +296,7 @@
 
   <section class="about">
     <p class="eyebrow">~/about</p>
-    <p>I'm a CS student at Michigan with a second major in Math of Finance &amp; Risk Management, currently looking for new-grad software engineering roles. My coursework spans data structures and algorithms, database systems, web systems, and machine learning, and I've spent the past couple of months building Spun, a full-stack social app, end to end — backend, mobile client, and infrastructure.</p>
+    <p>I'm a CS student at Michigan with a second major in Math of Finance &amp; Risk Management, currently looking for new-grad software engineering roles. My coursework spans data structures and algorithms, database systems, web systems, and machine learning, and I've spent the past couple of months building Spun, a full-stack social app, end to end — backend, mobile client, and infrastructure. Most recently I built Drape, an AI agent that puts together outfits from your own wardrobe, to learn how to build and evaluate LLM applications.</p>
   </section>
 
   <section>
@@ -323,6 +323,37 @@
         <div class="cta-row">
           <a class="btn primary" href="https://douggybuckets.github.io/spun_web/" target="_blank" rel="noopener">Try it live →</a>
           <a class="btn ghost" href="https://github.com/DouggyBuckets/spun_app" target="_blank" rel="noopener">View code</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <p class="eyebrow">~/projects/drape</p>
+    <div class="featured">
+      <img src="assets/drape-outfit.jpg" alt="Drape building a smart-casual outfit for a 45°F dinner from the user's wardrobe, with a step-by-step list of how the AI agent decided">
+      <div class="featured-body">
+        <h3>Drape</h3>
+        <p class="sub">An AI agent that builds outfits from the clothes you actually own</p>
+        <p>Photograph your clothes and Claude catalogs each item; then ask for an outfit (&ldquo;dinner, 45 degrees, smart casual&rdquo;) and an agent checks the weather, searches your wardrobe, and picks pieces that fit the occasion. I built it to learn LLM engineering properly: tool use, vision with structured output, an agent loop, and evaluation, with code &mdash; not the prompt &mdash; enforcing what the model is allowed to return.</p>
+        <div class="tags">
+          <span class="tag">TypeScript</span>
+          <span class="tag">Claude API</span>
+          <span class="tag">Node.js/Express</span>
+          <span class="tag">PostgreSQL</span>
+          <span class="tag">React</span>
+          <span class="tag">Docker</span>
+          <span class="tag">Fly.io</span>
+        </div>
+        <ul>
+          <li>Built a tool-using agent loop on the Anthropic SDK with four tools (wardrobe search, weather, rule check, submit) and an 8-call cap; submissions are validated in code, so an invented item ID is rejected and the agent corrects itself instead of returning clothes the user doesn't own</li>
+          <li>Extracted clothing attributes from photos with Claude vision and Zod-validated structured output, after resizing images and stripping EXIF/GPS metadata (~2&cent; per photo), with a script measuring per-attribute accuracy against hand labels</li>
+          <li>Wrote an evaluation harness of 18 test requests &times; 3 runs, graded by deterministic checks against each request's expected temperature and formality; it caught a morning-vs-daytime forecast bug, and the fix raised the all-checks pass rate from 94% to 100% with no regressions</li>
+          <li>Made it multi-user and safe to run publicly: scrypt password hashing and hashed session tokens, per-user data isolation enforced at the agent's tool layer, quotas and a daily spend cap, and live agent progress over server-sent events that cancels the model call when the user leaves</li>
+        </ul>
+        <div class="cta-row">
+          <a class="btn primary" href="https://drape.fly.dev" target="_blank" rel="noopener">Try the demo →</a>
+          <a class="btn ghost" href="https://github.com/DouggyBuckets/Drape" target="_blank" rel="noopener">View code</a>
         </div>
       </div>
     </div>
@@ -414,6 +445,7 @@
           <span class="tag">React</span>
           <span class="tag">React Native</span>
           <span class="tag">Node.js/Express</span>
+          <span class="tag">Claude API</span>
           <span class="tag">NumPy</span>
           <span class="tag">Pandas</span>
         </div>
@@ -430,6 +462,7 @@
           <span class="tag">MongoDB</span>
           <span class="tag">Docker</span>
           <span class="tag">AWS (EC2)</span>
+          <span class="tag">Fly.io</span>
           <span class="tag">Nginx</span>
           <span class="tag">Gunicorn</span>
         </div>
