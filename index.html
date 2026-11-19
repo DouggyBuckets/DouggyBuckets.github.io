@@ -347,7 +347,7 @@
         </div>
         <ul>
           <li>Built a tool-using agent loop on the Anthropic SDK with four tools (wardrobe search, weather, rule check, submit) and an 8-call cap; submissions are validated in code, so an invented item ID is rejected and the agent corrects itself instead of returning clothes the user doesn't own</li>
-          <li>Extracted clothing attributes from photos with Claude vision and Zod-validated structured output, after resizing images and stripping EXIF/GPS metadata (~2&cent; per photo), with a script measuring per-attribute accuracy against hand labels</li>
+          <li>Extracted clothing attributes from photos with Claude vision and Zod-validated structured output, after resizing images and stripping EXIF/GPS metadata (~2&cent; per photo); on a held-out set of 20 hand-labeled photos it scored 100% on category and 95&ndash;100% within one level on 1&ndash;5 formality and warmth scales, with error analysis tracing most misses to gaps in the labeling rubric</li>
           <li>Wrote an evaluation harness of 18 test requests &times; 3 runs, graded by deterministic checks against each request's expected temperature and formality; it caught a morning-vs-daytime forecast bug, and the fix raised the all-checks pass rate from 94% to 100% with no regressions</li>
           <li>Made it multi-user and safe to run publicly: scrypt password hashing and hashed session tokens, per-user data isolation enforced at the agent's tool layer, quotas and a daily spend cap, and live agent progress over server-sent events that cancels the model call when the user leaves</li>
         </ul>
